@@ -25,7 +25,7 @@ public class DesafioArray {
 		}
 
 		double media = total / notas.length;
-		System.out.printf("A média é: %.1f", media);
+		System.out.printf("A média é: %.1f!", media);
 
 		input.close();
 	}
