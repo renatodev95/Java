@@ -15,6 +15,8 @@ public class Matriz {
 		System.out.print("Quantas notas por aluno: ");
 		int qtdNotas = input.nextInt();
 
+		input.close();
+
 		double[][] notasDaTurma = new double[qtdAlunos][qtdNotas];
 		double total = 0;
 
@@ -34,8 +36,6 @@ public class Matriz {
 		for (double[] notasDoAluno : notasDaTurma) {
 			System.out.println(Arrays.toString(notasDoAluno));
 		}
-
-		input.close();
 
 	}
 }
