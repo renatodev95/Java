@@ -1,7 +1,5 @@
 package lambdas;
 
-import java.text.NumberFormat;
-import java.util.Locale;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -19,12 +17,9 @@ public class Desafio {
 		// Frete: >= 3000 (100) / < 3000 (50)
 		UnaryOperator<Double> frete = p -> p >= 3000 ? p + 100 : p + 50;
 		// Arredondar: Deixar duas casas decimais
-		Function<Double, String> arredondar = p -> {
-			NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-			return nf.format(p).replace("R$", "");
-		};
+		UnaryOperator<Double> arredondar = p -> Double.parseDouble(String.format("%.2f", p));
 		// Formatar: ex. R$1234,56
-		UnaryOperator<String> formatar = p -> "R$" + p;
+		Function<Double, String> formatar = p -> ("R$" + p).replace(".", ",");
 
 		String valor = precoComDesconto.andThen(impostoMunicipal).andThen(frete).andThen(arredondar).andThen(formatar)
 				.apply(p1.preco, p1.desconto);
